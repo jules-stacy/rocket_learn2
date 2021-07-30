@@ -51,9 +51,9 @@ if __name__ == '__main__':
         (1,
          (.1 / fps),
          (.2 / fps),
-         (.1 / fps),
+         (.2 / fps),
          .25,
-         1.5,
+         1.25,
          (.2 / fps),
          (.1 / fps)))
 
@@ -72,7 +72,7 @@ if __name__ == '__main__':
     epic_path = r"C:\\Program Files\\Epic Games\\rocketleague\\Binaries\\Win64\\RocketLeague.exe"
     monitor_path = 'C:\\Users\\jules\\Documents\\SMU\\code2\\reward_monitors\\reward_record_'
     num_procs = 27
-    num_ts = 200_000_000
+    num_ts = 80_000_000
     env = SB3VecMonitor(SB3MultipleInstanceWrapper(epic_path, num_procs, get_match_args, wait_time=15),
                         filename=monitor_path)
 
@@ -83,7 +83,7 @@ if __name__ == '__main__':
     
     # learner = PPO("MlpPolicy", env, verbose=3, n_epochs=1, target_kl=0.02 / 1.5)
 
-    learner = PPO.load(path='C:\\Users\\jules\\Documents\\SMU\\code2\\PPO2_r_u\\ppo_bot__290007540_steps',
+    learner = PPO.load(path='C:\\Users\\jules\\Documents\\SMU\\code2\\PPO2_r_u\\ppo_bot__670017420_steps',
                        env=env,
                        n_epochs=1,
                        target_kl=0.02 / 1.5,
@@ -94,5 +94,5 @@ if __name__ == '__main__':
     learner.learn(total_timesteps=num_ts,
                   callback=checkpoint)
                   
-    learner.save('C:\\Users\\jules\\Documents\\SMU\\code2\\PPO2_r_u_backup\\ppo_bot__490_000_000')
+    learner.save('C:\\Users\\jules\\Documents\\SMU\\code2\\PPO2_r_u_backup\\ppo_bot__750_000_000')
 
